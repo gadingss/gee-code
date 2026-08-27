@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export function Contact() {
+    const { t } = useLanguage();
+
     return (
         <section id="contact" className="py-24 px-6 md:px-12 bg-muted/30 relative">
             <div className="container mx-auto max-w-5xl">
@@ -17,10 +20,9 @@ export function Contact() {
                     transition={{ duration: 0.6 }}
                     className="text-center mb-16"
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">Get In Touch</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4 tracking-tight">{t.contact.title}</h2>
                     <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                        Have a project in mind or want to explore collaboration opportunities?
-                        Send me a message and let's build something amazing together.
+                        {t.contact.subtitle}
                     </p>
                 </motion.div>
 
@@ -37,9 +39,8 @@ export function Contact() {
                                 <Mail className="w-6 h-6" />
                             </div>
                             <div>
-                                <h3 className="text-lg font-medium">Email</h3>
-                                <p className="text-muted-foreground mt-1">hello@example.com</p>
-                                <p className="text-muted-foreground">Support: support@example.com</p>
+                                <h3 className="text-lg font-medium">{t.contact.email}</h3>
+                                <p className="text-muted-foreground mt-1">gadingsatrio468@gmail.com</p>
                             </div>
                         </div>
 
@@ -48,9 +49,9 @@ export function Contact() {
                                 <Phone className="w-6 h-6" />
                             </div>
                             <div>
-                                <h3 className="text-lg font-medium">Phone</h3>
-                                <p className="text-muted-foreground mt-1">+62 812 3456 7890</p>
-                                <p className="text-sm text-muted-foreground mt-1">Mon-Fri from 8am to 5pm</p>
+                                <h3 className="text-lg font-medium">{t.contact.phone}</h3>
+                                <p className="text-muted-foreground mt-1">+62 857 3650 8439</p>
+                                <p className="text-sm text-muted-foreground mt-1">{t.contact.phoneHours}</p>
                             </div>
                         </div>
 
@@ -59,9 +60,9 @@ export function Contact() {
                                 <MapPin className="w-6 h-6" />
                             </div>
                             <div>
-                                <h3 className="text-lg font-medium">Location</h3>
-                                <p className="text-muted-foreground mt-1">Jakarta, Indonesia</p>
-                                <p className="text-sm text-muted-foreground mt-1">Available for remote work worldwide</p>
+                                <h3 className="text-lg font-medium">{t.contact.location}</h3>
+                                <p className="text-muted-foreground mt-1">{t.contact.locationDesc}</p>
+                                <p className="text-sm text-muted-foreground mt-1">{t.contact.locationAvailability}</p>
                             </div>
                         </div>
                     </motion.div>
@@ -75,29 +76,29 @@ export function Contact() {
                         <form className="space-y-6 bg-card p-8 rounded-2xl border border-border/50 shadow-sm" onSubmit={(e) => e.preventDefault()}>
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                                 <div className="space-y-2">
-                                    <label htmlFor="name" className="text-sm font-medium">Name</label>
+                                    <label htmlFor="name" className="text-sm font-medium">{t.contact.formName}</label>
                                     <Input id="name" placeholder="John Doe" className="bg-muted/50" />
                                 </div>
                                 <div className="space-y-2">
-                                    <label htmlFor="email" className="text-sm font-medium">Email</label>
-                                    <Input id="email" type="email" placeholder="john@example.com" className="bg-muted/50" />
+                                    <label htmlFor="email" className="text-sm font-medium">{t.contact.formEmail}</label>
+                                    <Input id="email" type="email" placeholder="john@gmail.com" className="bg-muted/50" />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="subject" className="text-sm font-medium">Subject</label>
+                                <label htmlFor="subject" className="text-sm font-medium">{t.contact.formSubject}</label>
                                 <Input id="subject" placeholder="Project Inquiry" className="bg-muted/50" />
                             </div>
                             <div className="space-y-2">
-                                <label htmlFor="message" className="text-sm font-medium">Message</label>
+                                <label htmlFor="message" className="text-sm font-medium">{t.contact.formMessage}</label>
                                 <Textarea
                                     id="message"
-                                    placeholder="Tell me about your project..."
+                                    placeholder={t.contact.formMessagePlaceholder}
                                     rows={5}
                                     className="bg-muted/50 resize-none"
                                 />
                             </div>
                             <Button type="submit" size="lg" className="w-full">
-                                Send Message
+                                {t.contact.formSend}
                             </Button>
                         </form>
                     </motion.div>

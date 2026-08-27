@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
+import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -26,10 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" style={{ scrollBehavior: 'smooth' }}>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen overflow-x-hidden bg-background text-foreground`}
       >
-        <Header />
-        <main>{children}</main>
+        <LanguageProvider>
+          <Header />
+          <main>{children}</main>
+        </LanguageProvider>
       </body>
     </html>
   );

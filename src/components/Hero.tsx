@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Github, Linkedin, Instagram, Phone } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export function Hero() {
+    const { t } = useLanguage();
+
     return (
         <section className="min-h-screen flex items-center justify-center pt-24 pb-12 px-6 md:px-12 relative overflow-hidden">
             {/* Background gradients */}
@@ -22,15 +25,14 @@ export function Hero() {
                     <div className="space-y-4">
                         <h2 className="text-primary font-medium tracking-wide flex items-center justify-center md:justify-start gap-4">
                             <span className="w-12 h-[2px] bg-primary"></span>
-                            HI, I'M GADING
+                            {t.hero.greeting.toUpperCase()} GADING
                         </h2>
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
-                            Software <br className="hidden md:block" />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-indigo-600">Developer</span>
+                            {t.hero.role.split(" ")[0]} <br className="hidden md:block" />
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-500 to-indigo-600">{t.hero.role.split(" ")[1]}</span>
                         </h1>
                         <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto md:mx-0 font-light mt-6">
-                            I build pixel-perfect, engaging, and accessible digital experiences.
-                            Passionate about turning complex problems into elegant, modern solutions.
+                            {t.hero.subtitle}
                         </p>
                     </div>
 
@@ -40,11 +42,15 @@ export function Hero() {
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
                     >
-                        <Button size="lg" className="rounded-full px-8">
-                            View Work
+                        <Button size="lg" className="rounded-full px-8" asChild>
+                            <Link href="/#projects">
+                                {t.hero.viewWork}
+                            </Link>
                         </Button>
-                        <Button size="lg" variant="outline" className="rounded-full px-8">
-                            Contact Me
+                        <Button size="lg" variant="outline" className="rounded-full px-8" asChild>
+                            <Link href="/#contact">
+                                {t.hero.contactMe}
+                            </Link>
                         </Button>
                     </motion.div>
 

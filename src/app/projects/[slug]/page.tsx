@@ -8,11 +8,13 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, ExternalLink, Github, Globe, Code2, Layers, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function ProjectDetail() {
     const params = useParams();
     const router = useRouter();
     const slug = params.slug as string;
+    const { t, lang } = useLanguage();
     const [currentIndex, setCurrentIndex] = useState(0);
     const [direction, setDirection] = useState(0); // -1 for left, 1 for right
 
@@ -21,8 +23,8 @@ export default function ProjectDetail() {
     if (!project) {
         return (
             <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground">
-                <h1 className="text-4xl font-bold mb-4">Project Not Found</h1>
-                <Button onClick={() => router.push("/")}>Back to Home</Button>
+                <h1 className="text-4xl font-bold mb-4">{t.projectDetail.notFound}</h1>
+                <Button onClick={() => router.push("/")}>{t.projectDetail.back}</Button>
             </div>
         );
     }
@@ -79,7 +81,7 @@ export default function ProjectDetail() {
                         >
                             <ArrowLeft className="w-5 h-5" />
                         </Button>
-                        <span className="text-sm font-bold uppercase tracking-[0.3em] text-primary">Project Detail</span>
+                        <span className="text-sm font-bold uppercase tracking-[0.3em] text-primary">{t.projectDetail.detailTitle}</span>
                     </motion.div>
 
                     <motion.div
@@ -189,16 +191,16 @@ export default function ProjectDetail() {
                                     </div>
                                 </div>
                                 <div className="mt-4 text-center text-xs text-muted-foreground font-medium uppercase tracking-widest opacity-50">
-                                    Hint: Drag the image or use arrows to navigate
+                                    {t.projectDetail.hint}
                                 </div>
                             </div>
                         )}
 
                         {/* Full Description */}
                         <div className="space-y-6 max-w-4xl">
-                            <h2 className="text-3xl font-bold tracking-tight">About the Project</h2>
+                            <h2 className="text-3xl font-bold tracking-tight">{t.projectDetail.about}</h2>
                             <p className="text-xl text-muted-foreground leading-relaxed font-light">
-                                {project.fullDescription}
+                                {lang === "IN" ? project.fullDescription_in : project.fullDescription}
                             </p>
                         </div>
                     </div>
@@ -211,13 +213,13 @@ export default function ProjectDetail() {
                                 {project.liveUrl !== "#" && (
                                     <Button size="lg" className="w-full rounded-2xl h-16 text-lg font-bold gap-3 shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform" asChild>
                                         <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                                            <Globe className="w-6 h-6" /> Live Preview
+                                            <Globe className="w-6 h-6" /> {t.projectDetail.livePreview}
                                         </a>
                                     </Button>
                                 )}
                                 <Button variant="outline" size="lg" className="w-full rounded-2xl h-16 text-lg font-bold gap-3 border-2 hover:bg-muted/50 transition-all" asChild>
                                     <a href={project.githubUrl} target="_blank" rel="noreferrer">
-                                        <Github className="w-6 h-6" /> Source Code
+                                        <Github className="w-6 h-6" /> {t.projectDetail.sourceCode}
                                     </a>
                                 </Button>
                             </div>
@@ -230,8 +232,8 @@ export default function ProjectDetail() {
                                         <Code2 className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-black">My Role</div>
-                                        <div className="font-bold">Full Stack Developer</div>
+                                        <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-black">{t.projectDetail.role}</div>
+                                        <div className="font-bold">{t.projectDetail.roleValue}</div>
                                     </div>
                                 </div>
                                 <div className="flex items-center gap-4">
@@ -239,8 +241,8 @@ export default function ProjectDetail() {
                                         <Layers className="w-6 h-6" />
                                     </div>
                                     <div>
-                                        <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-black">Status</div>
-                                        <div className="font-bold">Production Ready</div>
+                                        <div className="text-[10px] text-muted-foreground uppercase tracking-widest font-black">{t.projectDetail.status}</div>
+                                        <div className="font-bold">{t.projectDetail.statusValue}</div>
                                     </div>
                                 </div>
                             </div>
@@ -249,7 +251,7 @@ export default function ProjectDetail() {
                         {/* Tech Stack Pills */}
                         <div className="bg-card/30 backdrop-blur-xl border border-border/50 rounded-[32px] p-8 space-y-6">
                             <h3 className="text-xl font-bold flex items-center gap-2 text-foreground/90">
-                                <Layers className="w-5 h-5 text-primary" /> Technologies
+                                <Layers className="w-5 h-5 text-primary" /> {t.projectDetail.technologies}
                             </h3>
                             <div className="flex flex-wrap gap-2">
                                 {project.techStack?.map(tech => (
