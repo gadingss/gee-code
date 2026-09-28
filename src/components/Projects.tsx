@@ -1,12 +1,11 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ExternalLink, Github, Info, MousePointer2 } from "lucide-react";
-import { useRef } from "react";
+import { ExternalLink, Github, Info, ArrowRight, Layers } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
 export const projects = [
@@ -15,8 +14,8 @@ export const projects = [
         slug: "minikiyo-dimsum",
         number: "01",
         color: "#f97316", // Tailwind orange-500
-        description: "A full-stack e-commerce solution with Next.js, Stripe integration, and a custom CMS dashboard.",
-        description_in: "Solusi e-commerce full-stack dengan integrasi payment gateway Midtrans dan dasbor CMS kustom.",
+        description: "A full-stack e-commerce platform with Midtrans payment gateway integration and a robust admin dashboard for dimsum business management.",
+        description_in: "Platform e-commerce full-stack dengan integrasi payment gateway Midtrans dan dasbor admin yang tangguh untuk manajemen bisnis dimsum.",
         fullDescription: "Minikiyo Dimsum is a comprehensive e-commerce platform designed for a dimsum business. It features a seamless ordering flow, integration with payment gateways for secure transactions, and a robust admin dashboard for managing products, orders, and customer data. Built with Laravel and Tailwind CSS, it prioritizes performance and user experience.",
         fullDescription_in: "Minikiyo Dimsum adalah platform e-commerce komprehensif yang dirancang untuk bisnis dimsum. Platform ini menampilkan alur pemesanan yang mulus, integrasi dengan payment gateway untuk transaksi yang aman, dan dasbor admin yang tangguh untuk mengelola produk, pesanan, dan data pelanggan. Dibangun menggunakan Laravel dan Tailwind CSS, aplikasi ini memprioritaskan performa dan pengalaman pengguna.",
         image: "/projects/minikiyo/minikiyo.png",
@@ -37,178 +36,276 @@ export const projects = [
         slug: "simoli-cekat",
         number: "02",
         color: "#3b82f6", // Tailwind blue-500
-        description: "An AI-powered application that helps users write better content with real-time suggestions.",
-        description_in: "Aplikasi berbasis Laravel yang membantu optimasi konten dan bantuan menulis dengan saran waktu nyata.",
-        fullDescription: "SIMOLI-CEKAT is a specialized application focused on content optimization and writing assistance. It provides real-time suggestions, grammar checks, and SEO analysis to help users create high-quality content efficiently. This system was developed to streamline communication and documentation processes within governmental organizations.",
-        fullDescription_in: "SIMOLI-CEKAT adalah aplikasi khusus yang berfokus pada optimasi konten dan bantuan menulis. Menyediakan saran waktu nyata, pemeriksaan tata bahasa, dan analisis SEO untuk membantu pengguna membuat konten berkualitas tinggi secara efisien. Sistem ini dikembangkan untuk menyederhanakan proses komunikasi dan dokumentasi di lingkungan dinas pemerintah daerah.",
-        image: "/projects/simoli-cekat.png",
+        description: "A comprehensive system for documenting and analyzing fish disease test results and water quality parameters with real-time reporting.",
+        description_in: "Sistem komprehensif untuk mendokumentasikan dan menganalisis hasil uji penyakit ikan serta parameter kualitas air dengan pelaporan waktu nyata.",
+        fullDescription: "SIMOLI-CEKAT is a specialized fish disease and water quality testing system designed for aquaculture monitoring. It enables users to record disease test results, water quality parameters, and maintain detailed laboratory reports. The system provides real-time data analysis, historical tracking, and comprehensive documentation for fish farming operations, ensuring quality control and disease prevention.",
+        fullDescription_in: "SIMOLI-CEKAT adalah sistem khusus untuk pengujian penyakit ikan dan kualitas air yang dirancang untuk pemantauan akuakultur. Sistem ini memungkinkan pengguna mencatat hasil uji penyakit, parameter kualitas air, dan memelihara laporan laboratorium terperinci. Sistem ini menyediakan analisis data waktu nyata, pelacakan riwayat, dan dokumentasi komprehensif untuk operasi peternakan ikan, memastikan kontrol kualitas dan pencegahan penyakit.",
+        image: "/projects/simoli-cekat/simoli-cekat.png",
         screenshots: [
-            "/projects/simoli-cekat.png",
-            "https://images.unsplash.com/photo-1454165833767-027ffea9e51b?q=80&w=800",
-            "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800"
+            "/projects/simoli-cekat/simoli-cekat.png",
+            "/projects/simoli-cekat/1.png",
+            "/projects/simoli-cekat/2.png"
         ],
-        tags: ["Laravel", "Blade", "Tailwind CSS"],
+        tags: ["Laravel", "MySQL", "Tailwind CSS", "Reporting"],
         liveUrl: "https://simolicekat.kedirikab.go.id/",
         githubUrl: "#",
-        techStack: ["Laravel", "PostgreSQL", "Tailwind CSS", "Redis"]
+        techStack: ["Laravel", "MySQL", "Tailwind CSS"]
     },
     {
-        title: "Task Management App",
-        slug: "task-management-app",
+        title: "LBB Number One",
+        slug: "lbb-number-one",
         number: "03",
-        color: "#8b5cf6", // Tailwind violet-500
-        description: "A beautiful, drag-and-drop task management tool inspired by Linear and Notion.",
-        description_in: "Aplikasi manajemen tugas drag-and-drop yang indah terinspirasi oleh Linear dan Notion.",
-        fullDescription: "A productivity tool that combines the simplicity of Notion with the power of Linear. It features a highly interactive drag-and-drop interface for task management, real-time collaboration, and detailed project tracking. The app uses a modern tech stack to ensure a smooth and responsive user interface.",
-        fullDescription_in: "Alat produktivitas yang menggabungkan kesederhanaan Notion dengan kekuatan Linear. Menampilkan antarmuka drag-and-drop yang sangat interaktif untuk manajemen tugas, kolaborasi waktu nyata, dan pelacakan proyek yang detail. Aplikasi ini menggunakan tech stack modern untuk memastikan antarmuka pengguna yang lancar dan responsif.",
-        image: "https://images.unsplash.com/photo-1611224923853-807d2c385f09?q=80&w=800&auto=format&fit=crop",
+        color: "#10b981", // Tailwind emerald-500
+        description: "A private tutoring management system for scheduling, student tracking, and tutor coordination.",
+        description_in: "Sistem manajemen bimbingan les privat untuk penjadwalan, pelacakan siswa, dan koordinasi tutor.",
+        fullDescription: "LBB Number One is a comprehensive management system designed for private tutoring businesses. It streamlines scheduling between tutors and students, tracks student progress and attendance, manages tutor assignments, and provides detailed reporting for business owners. The platform ensures efficient coordination of tutoring sessions and helps maintain high-quality educational services.",
+        fullDescription_in: "LBB Number One adalah sistem manajemen komprehensif yang dirancang untuk bisnis bimbingan les privat. Sistem ini menyederhanakan penjadwalan antara tutor dan siswa, melacak kemajuan dan kehadiran siswa, mengelola penugasan tutor, serta menyediakan laporan terperinci untuk pemilik usaha. Platform ini memastikan koordinasi sesi les yang efisien dan membantu menjaga layanan pendidikan yang berkualitas tinggi.",
+        image: "/projects/lbb-number-one/lbb-number-one.png",
         screenshots: [
-            "https://images.unsplash.com/photo-1611224923853-807d2c385f09?q=80&w=800",
-            "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=800",
-            "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=800"
+            "/projects/lbb-number-one/lbb-number-one.png",
+            "/projects/lbb-number-one/1.png",
+            "/projects/lbb-number-one/2.png"
         ],
-        tags: ["Vue", "Tailwind CSS", "Supabase", "Framer Motion"],
+        tags: ["Laravel", "Blade", "Tailwind CSS", "MySQL"],
         liveUrl: "#",
         githubUrl: "#",
-        techStack: ["Vue.js", "Supabase", "Tailwind CSS", "Framer Motion"]
+        techStack: ["Laravel", "MySQL", "Tailwind CSS", "Bootstrap"]
+    },
+    {
+        title: "NEXORA",
+        slug: "nexora",
+        number: "04",
+        color: "#06b6d4",
+        description: "A Web3 & on-chain analytics platform featuring a dark financial terminal UI for tracking crypto markets, wallet activities, smart money, and real-time paper trading.",
+        description_in: "Platform Web3 & on-chain analytics dengan tampilan financial terminal untuk memantau market crypto, aktivitas wallet, smart money, dan paper trading real-time.",
+        fullDescription: "NEXORA is a comprehensive Web3 and on-chain analytics platform built with a high-performance financial terminal interface. It empowers traders and crypto enthusiasts to monitor live cryptocurrency markets, track whale and smart money wallet movements, inspect on-chain transactions via Etherscan & EVM RPCs, and practice trading strategies using a real-time paper trading engine. Designed with dark financial aesthetic inspired by professional Bloomberg-style terminals.",
+        fullDescription_in: "NEXORA adalah platform Web3 & on-chain analytics komprehensif dengan antarmuka financial terminal berperforma tinggi. Platform ini membantu trader dan antusias crypto memantau pergerakan pasar secara live, melacak aktivitas wallet paus & smart money, memeriksa transaksi on-chain via Etherscan & EVM RPC, serta melakukan simulasi paper trading berbasis data market real-time.",
+        image: "/projects/nexora/nexora.png",
+        screenshots: [
+            "/projects/nexora/nexora.png",
+            "/projects/nexora/1.png",
+            "/projects/nexora/2.png"
+        ],
+        tags: ["Next.js", "Web3", "Tailwind CSS", "Wagmi"],
+        liveUrl: "https://nexora.geedev.tech",
+        githubUrl: "https://github.com/gadingss/nexora.git",
+        techStack: [
+            "Next.js 16",
+            "React 19",
+            "TypeScript",
+            "Tailwind CSS",
+            "Wagmi",
+            "Viem",
+            "Etherscan API",
+            "CoinGecko API",
+            "Recharts",
+            "TanStack Query"
+        ]
     }
 ];
 
 export function Projects() {
-    const targetRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: targetRef,
-    });
     const { t, lang } = useLanguage();
 
-    // Calculate horizontal scroll: -70% usually works well for 3 cards
-    // 0 is start, -66% for 3 items might be precise but adding buffer for spacing
-    const x = useTransform(scrollYProgress, [0, 1], ["10%", "-70%"]);
+    const featuredProjects = projects.slice(0, 3);
+
+    const containerVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.12,
+            },
+        },
+    };
+
+    const cardVariants: Variants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+        },
+    };
 
     return (
-        <section ref={targetRef} id="projects" className="relative h-[300vh] bg-background">
-            <div className="sticky top-0 flex flex-col h-screen overflow-hidden">
-                <div className="w-full pt-12 md:pt-16 px-6 md:px-12 flex justify-between items-start z-20 shrink-0 pointer-events-none">
-                    <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+        <section id="projects" className="relative py-24 px-6 md:px-12 max-w-7xl mx-auto">
+            {/* Header */}
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <motion.div
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <span className="text-xs font-mono font-bold tracking-widest text-primary uppercase mb-2 block">
+                        // Featured Works
+                    </span>
+                    <h2 className="text-4xl md:text-6xl font-black tracking-tight uppercase">
+                        {t.projects.title}
+                    </h2>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <Button
+                        variant="ghost"
+                        className="group font-bold text-sm hover:text-primary gap-2"
+                        asChild
                     >
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tight text-foreground/20 uppercase">
-                            {t.projects.title.split(' ')[0]} <br className="hidden md:block" /> {t.projects.title.split(' ').slice(1).join(' ')}
-                        </h2>
-                    </motion.div>
+                        <Link href="/projects">
+                            {t.projects.fullArchive}
+                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </Link>
+                    </Button>
+                </motion.div>
+            </div>
 
-                    {/* Horizontal Scroll Progress Indicator */}
-                    <div className="hidden md:flex items-center gap-4 mt-6">
-                        <span className="text-[10px] font-black tracking-widest uppercase text-muted-foreground">Progress</span>
-                        <div className="w-48 h-[2px] bg-muted overflow-hidden rounded-full">
-                            <motion.div
-                                className="h-full bg-primary"
-                                style={{ scaleX: scrollYProgress, transformOrigin: "left" }}
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                <div className="flex-1 flex items-center">
-                    <motion.div style={{ x }} className="flex gap-12 px-12">
-                    {projects.map((project, index) => (
-                        <div key={index} className="group relative h-[450px] w-[350px] md:h-[600px] md:w-[450px] flex-shrink-0">
-                            {/* Animated Background Glow */}
+            {/* Horizontal Scroll Track */}
+            <div className="relative -mx-6 px-6 md:-mx-12 md:px-12">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-50px" }}
+                    className="flex gap-6 overflow-x-auto pb-8 pt-2 scrollbar-none snap-x snap-mandatory"
+                >
+                    {/* 3 Featured Project Cards */}
+                    {featuredProjects.map((project) => (
+                        <motion.div
+                            key={project.slug}
+                            variants={cardVariants}
+                            className="group relative w-[310px] sm:w-[360px] md:w-[400px] flex-shrink-0 snap-start"
+                        >
+                            {/* Glow */}
                             <div
-                                className="absolute -inset-4 rounded-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-2xl"
-                                style={{ backgroundColor: `${project.color}15` }}
+                                className="absolute -inset-2 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl pointer-events-none"
+                                style={{ backgroundColor: `${project.color}20` }}
                             />
 
-                            <Card className="relative h-full w-full overflow-hidden bg-card/40 backdrop-blur-2xl border border-white/5 rounded-[32px] flex flex-col group/card shadow-2xl transition-all duration-500 hover:border-primary/20">
-                                {/* Number Indicator */}
-                                <div className="absolute top-8 right-8 z-20 opacity-20 group-hover:opacity-100 transition-opacity duration-500">
-                                    <span className="text-4xl font-black font-mono" style={{ color: project.color }}>
+                            <Card className="relative h-full overflow-hidden bg-card/60 backdrop-blur-xl border border-border/50 rounded-[28px] flex flex-col shadow-xl transition-all duration-500 group-hover:border-primary/30 group-hover:-translate-y-1.5">
+                                {/* Number Badge */}
+                                <div className="absolute top-5 right-5 z-20 opacity-30 group-hover:opacity-100 transition-opacity duration-300">
+                                    <span className="text-2xl font-black font-mono" style={{ color: project.color }}>
                                         {project.number}
                                     </span>
                                 </div>
 
-                                {/* Project Image Box */}
-                                <div className="relative h-[45%] w-full overflow-hidden p-6 pb-0">
-                                    <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-xl border border-white/5">
-                                        <div className="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors duration-500 z-10" />
+                                {/* Image Box */}
+                                <div className="relative h-48 md:h-52 w-full overflow-hidden p-4 pb-0">
+                                    <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-md border border-white/5">
                                         <img
                                             src={project.image}
                                             alt={project.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-500 z-10" />
                                     </div>
                                 </div>
 
-                                <CardHeader className="pt-6 px-8">
-                                    <div className="flex flex-wrap gap-2 mb-3">
-                                        {project.tags.map(tag => (
-                                            <Badge key={tag} variant="secondary" className="px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/5 border-none text-muted-foreground">
+                                <CardHeader className="pt-5 px-6">
+                                    <div className="flex flex-wrap gap-1.5 mb-2">
+                                        {project.tags.slice(0, 3).map((tag) => (
+                                            <Badge
+                                                key={tag}
+                                                variant="secondary"
+                                                className="px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-white/5 border-none text-muted-foreground"
+                                            >
                                                 {tag}
                                             </Badge>
                                         ))}
                                     </div>
-                                    <CardTitle className="text-2xl md:text-3xl font-black tracking-tight group-hover:text-primary transition-colors">
+                                    <CardTitle className="text-xl md:text-2xl font-black tracking-tight group-hover:text-primary transition-colors line-clamp-1">
                                         {project.title}
                                     </CardTitle>
                                 </CardHeader>
 
-                                <CardContent className="px-8 flex-grow">
-                                    <CardDescription className="text-base text-muted-foreground/80 font-medium leading-relaxed line-clamp-3">
+                                <CardContent className="px-6 flex-grow">
+                                    <CardDescription className="text-xs md:text-sm text-muted-foreground/80 font-medium leading-relaxed line-clamp-3">
                                         {lang === "IN" ? project.description_in : project.description}
                                     </CardDescription>
                                 </CardContent>
 
-                                <CardFooter className="px-8 pb-8 flex gap-3">
-                                    <Button variant="outline" size="sm" className="h-12 rounded-xl flex-1 gap-2 font-bold uppercase tracking-wider text-[10px] border-white/10 hover:bg-white/5" asChild>
-                                        <a href={project.githubUrl} target="_blank" rel="noreferrer">
-                                            <Github className="w-4 h-4" /> {t.projects.code}
-                                        </a>
-                                    </Button>
-                                    <Button size="sm" className="h-12 rounded-xl flex-1 gap-2 font-bold uppercase tracking-wider text-[10px] shadow-lg shadow-primary/20 hover:scale-[1.05] transition-transform" asChild>
+                                <CardFooter className="px-6 pb-6 pt-2 flex gap-2">
+                                    {project.githubUrl && project.githubUrl !== "#" && (
+                                        <Button
+                                            variant="outline"
+                                            size="sm"
+                                            className="h-10 rounded-xl flex-1 gap-1.5 font-bold uppercase tracking-wider text-[10px] border-white/10 hover:bg-white/5"
+                                            asChild
+                                        >
+                                            <a href={project.githubUrl} target="_blank" rel="noreferrer">
+                                                <Github className="w-3.5 h-3.5" /> {t.projects.code}
+                                            </a>
+                                        </Button>
+                                    )}
+                                    <Button
+                                        size="sm"
+                                        className="h-10 rounded-xl flex-1 gap-1.5 font-bold uppercase tracking-wider text-[10px] shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform"
+                                        asChild
+                                    >
                                         <Link href={`/projects/${project.slug}`}>
-                                            <Info className="w-4 h-4" /> {t.projects.detail}
+                                            <Info className="w-3.5 h-3.5" /> {t.projects.detail}
                                         </Link>
                                     </Button>
-                                    {project.liveUrl !== "#" && (
-                                        <Button variant="secondary" size="sm" className="h-12 w-12 rounded-xl flex items-center justify-center p-0 border-white/10" asChild title="Live Demo">
+                                    {project.liveUrl && project.liveUrl !== "#" && (
+                                        <Button
+                                            variant="secondary"
+                                            size="sm"
+                                            className="h-10 w-10 rounded-xl flex items-center justify-center p-0 border-white/10"
+                                            asChild
+                                            title="Live Demo"
+                                        >
                                             <a href={project.liveUrl} target="_blank" rel="noreferrer">
-                                                <ExternalLink className="w-4 h-4" />
+                                                <ExternalLink className="w-3.5 h-3.5" />
                                             </a>
                                         </Button>
                                     )}
                                 </CardFooter>
                             </Card>
-                        </div>
+                        </motion.div>
                     ))}
 
-                    {/* View All Card */}
-                    <div className="h-[450px] w-[350px] md:h-[600px] md:w-[450px] flex-shrink-0 flex items-center justify-center">
-                        <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            className="text-center space-y-6"
-                        >
-                            <div className="w-24 h-24 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6 text-primary animate-pulse">
-                                <MousePointer2 className="w-10 h-10" />
-                            </div>
-                            <h3 className="text-2xl font-black uppercase tracking-widest">{t.projects.more}</h3>
-                            <Button variant="ghost" className="hover:text-primary font-bold group">
-                                {t.projects.fullArchive}
-                                <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
-                            </Button>
-                        </motion.div>
-                    </div>
-                </motion.div>
-                </div>
-            </div>
+                    {/* 4th Card: View All / Selengkapnya */}
+                    <motion.div
+                        variants={cardVariants}
+                        className="group relative w-[260px] sm:w-[300px] flex-shrink-0 snap-start flex items-stretch"
+                    >
+                        <div className="absolute -inset-2 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl bg-primary/20 pointer-events-none" />
 
-            {/* Scroll Indicator Bottom */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 pointer-events-none opacity-50">
-                <span className="text-[10px] font-black tracking-[0.3em] uppercase">{t.projects.explore}</span>
-                <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
+                        <Link
+                            href="/projects"
+                            className="relative w-full overflow-hidden bg-card/40 hover:bg-card/70 backdrop-blur-xl border border-dashed border-border/80 hover:border-primary/50 rounded-[28px] p-8 flex flex-col items-center justify-center text-center group transition-all duration-500 group-hover:-translate-y-1.5 shadow-xl"
+                        >
+                            <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform duration-500">
+                                <Layers className="w-8 h-8" />
+                            </div>
+
+                            <span className="text-xs font-mono font-bold tracking-widest text-primary uppercase mb-2">
+                                +{projects.length - featuredProjects.length} {lang === "IN" ? "Lainnya" : "More"}
+                            </span>
+
+                            <h3 className="text-2xl font-black tracking-tight mb-2 group-hover:text-primary transition-colors">
+                                {lang === "IN" ? "Lihat Semua Proyek" : "View All Projects"}
+                            </h3>
+
+                            <p className="text-xs text-muted-foreground/80 mb-6 max-w-[200px]">
+                                {lang === "IN"
+                                    ? "Jelajahi seluruh koleksi dan arsip proyek yang pernah saya buat."
+                                    : "Explore complete collection and archive of all projects built."}
+                            </p>
+
+                            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary group-hover:translate-x-1 transition-transform">
+                                <span>{lang === "IN" ? "Buka Halaman" : "Open Archive"}</span>
+                                <ArrowRight className="w-4 h-4" />
+                            </div>
+                        </Link>
+                    </motion.div>
+                </motion.div>
             </div>
         </section>
     );
