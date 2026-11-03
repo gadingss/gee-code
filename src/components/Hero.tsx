@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Instagram, Phone } from "lucide-react";
+import { Github, Linkedin, Instagram, Phone, Download, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/LanguageContext";
 
@@ -23,6 +23,19 @@ export function Hero() {
                     transition={{ duration: 0.8 }}
                 >
                     <div className="space-y-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-xs sm:text-sm font-medium backdrop-blur-md">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                            </span>
+                            <span>{t.hero.availableForWork}</span>
+                            <span className="text-muted-foreground/60">•</span>
+                            <span className="inline-flex items-center gap-1 text-primary">
+                                <Sparkles className="w-3.5 h-3.5" />
+                                {t.hero.customProject}
+                            </span>
+                        </div>
+
                         <h2 className="text-primary font-medium tracking-wide flex items-center justify-center md:justify-start gap-4">
                             <span className="w-12 h-[2px] bg-primary"></span>
                             {t.hero.greeting.toUpperCase()} GADING
@@ -37,7 +50,7 @@ export function Hero() {
                     </div>
 
                     <motion.div
-                        className="flex items-center justify-center md:justify-start gap-4"
+                        className="flex flex-wrap items-center justify-center md:justify-start gap-4"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
@@ -48,6 +61,12 @@ export function Hero() {
                             </Link>
                         </Button>
                         <Button size="lg" variant="outline" className="rounded-full px-8" asChild>
+                            <a href="/resume.pdf" download="Resume-Gading.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                                <Download className="w-4 h-4" />
+                                {t.hero.downloadCV}
+                            </a>
+                        </Button>
+                        <Button size="lg" variant="ghost" className="rounded-full px-8" asChild>
                             <Link href="/#contact">
                                 {t.hero.contactMe}
                             </Link>

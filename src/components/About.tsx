@@ -5,11 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { Github, FolderGit2, Clock, Coffee, Flame } from "lucide-react";
 import { useLanguage } from "@/lib/LanguageContext";
 
-const skills = [
-    "JavaScript (ES6+)", "TypeScript", "React", "Next.js",
-    "Node.js", "Tailwind CSS", "Framer Motion", "PostgreSQL",
-    "Git", "Docker", "REST APIs", "GraphQL"
-];
+const skills = [ "JavaScript (ES6+)", "TypeScript", "React", "Next.js", "PHP", "Laravel", "Python", "FastAPI", "MySQL", "PostgreSQL", "REST APIs", "Git", "Tailwind CSS", "Docker" ];
 
 function AnimatedCounter({ value, prefix = "", suffix = "" }: { value: number; prefix?: string; suffix?: string }) {
     const nodeRef = useRef<HTMLSpanElement>(null);

@@ -13,7 +13,10 @@ export const dict = {
       role: "Fullstack Developer",
       subtitle: "I build modern web applications from user interface design to backend logic and database management.",
       viewWork: "View Work",
-      contactMe: "Contact Me"
+      contactMe: "Contact Me",
+      downloadCV: "Download CV",
+      availableForWork: "Available for Work",
+      customProject: "Open for Custom Projects"
     },
     about: {
       title: "About Me",
@@ -95,7 +98,10 @@ export const dict = {
       role: "Fullstack Developer",
       subtitle: "Saya membangun aplikasi web modern mulai dari desain antarmuka pengguna hingga logika backend dan manajemen basis data.",
       viewWork: "Lihat Karya",
-      contactMe: "Hubungi Saya"
+      contactMe: "Hubungi Saya",
+      downloadCV: "Unduh CV",
+      availableForWork: "Tersedia untuk Bekerja",
+      customProject: "Terbuka untuk Proyek Kustom"
     },
     about: {
       title: "Tentang Saya",

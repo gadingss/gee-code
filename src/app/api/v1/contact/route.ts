@@ -4,7 +4,7 @@ export async function GET() {
     return NextResponse.json({
         status: "success",
         data: {
-            email: "gadingseto@example.com",
+            email: "gadingsatrio468@gmail.com",
             whatsapp: "+6285746508439",
             social: {
                 github: "gadingss",

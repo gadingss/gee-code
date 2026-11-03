@@ -6,8 +6,8 @@ export async function GET() {
         data: {
             name: "Gading Seto Satrio",
             role: "Fullstack Developer",
-            location: "Indonesia",
-            experience: "2+ years",
+            location: "Kediri,Indonesia",
+            experience: "Fresh Graduate",
             available_for_hire: true,
             bio: "Passionate fullstack developer specializing in React, Next.js, and Laravel. I build modern, scalable web applications with great user experiences.",
             links: {
